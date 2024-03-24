@@ -7,27 +7,29 @@ const Services = () => {
         <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
           <div className="ml-auto lg:col-start-2 lg:max-w-2xl">
             <p className="text-base font-semibold leading-6 text-indigo-500 uppercase">
-              Services to God
+              Servants of God
             </p>
             <h4 className="mt-2 text-2xl font-extrabold leading-8 text-gray-900 dark:text-white sm:text-3xl sm:leading-9">
               I am a Servant of God, and as God needs no service, serving His
               creation is serving Him
             </h4>
-            <p className="mt-4 text-right text-lg leading-6 text-gray-100 dark:text-gray-500">
+            <p className="mt-4 mb-4 text-right text-lg leading-6 text-gray-100 dark:text-gray-500">
               - Khan Abdul Ghaffar Khan (Bacha Khan)
             </p>
-            <p className="mt-4 text-gray-300 leading-snug text-justify">
+            <span className="text-2xl font-bold text-gray-200 p-4">
               "I am a Servant of God, and as God needs no service, serving His
-              creation is serving Him." This profound statement encapsulates the
-              essence of selflessness and devotion. It reflects the
-              understanding that true service to the Divine is not through grand
-              gestures or rituals but through humble acts of kindness and
-              compassion towards all beings. By recognizing the
-              interconnectedness of all life and seeing the divine spark within
-              each individual, one can find fulfillment and purpose in serving
-              others. In this way, every act of service becomes a sacred
-              offering, a way to honor and connect with the divine presence that
-              permeates all existence."
+              creation is serving Him."
+            </span>{" "}
+            <p className="mt-1 text-gray-400 leading-snug text-justify">
+              <br /> This profound statement encapsulates the essence of
+              selflessness and devotion. It reflects the understanding that true
+              service to the Divine is not through grand gestures or rituals but
+              through humble acts of kindness and compassion towards all beings.
+              By recognizing the interconnectedness of all life and seeing the
+              divine spark within each individual, one can find fulfillment and
+              purpose in serving others. In this way, every act of service
+              becomes a sacred offering, a way to honor and connect with the
+              divine presence that permeates all existence.
             </p>
           </div>
           <div className="relative mt-10 lg:-mx-4 relative-20 lg:mt-0 lg:col-start-1">

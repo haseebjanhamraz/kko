@@ -16,7 +16,7 @@ const Carousel = () => {
           <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
             <h1 className="text-white text-left  lg:text-7xl uppercase text-6xl font-bold sm:text-5xl">
               Khudai Khidmatgar Organization
-              <strong className="bg-rose-500/55 max-w-lg rounded-md px-4 text-center text-3xl/snug text-white block font-normal mt-5">
+              <strong className="bg-rose-500/55 max-w-md rounded-md px-4 text-center text-2xl/snug text-white block font-normal mt-5">
                 {" "}
                 The continuation of Khudai Khidmatgar Movement
               </strong>

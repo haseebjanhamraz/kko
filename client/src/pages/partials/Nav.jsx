@@ -1,14 +1,15 @@
-import { Fragment } from "react";
+import React, { Fragment, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
-const navigation = [
-  { name: "Home", href: "#", current: true },
-  { name: "About", href: "#", current: false },
+const initialNavigation = [
+  { name: "Home", href: "/", current: false },
+  { name: "About", href: "/about", current: false },
   { name: "History", href: "#", current: false },
   { name: "Activities", href: "#", current: false },
   { name: "Services", href: "#", current: false },
-  { name: "Contact", href: "#", current: false },
+  { name: "Contact", href: "/contact", current: false },
   { name: "Donate", href: "#", current: false },
 ];
 
@@ -16,7 +17,17 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function Nav() {
+  const [navigation, setNavigation] = useState(initialNavigation);
+  const location = useLocation();
+
+  React.useEffect(() => {
+    const updatedNavigation = navigation.map((item) => ({
+      ...item,
+      current: item.href === location.pathname,
+    }));
+    setNavigation(updatedNavigation);
+  }, [location.pathname]);
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
