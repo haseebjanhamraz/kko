@@ -2,11 +2,12 @@ import React, { Fragment, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import BecomeVolunteerButton from "../../components/BecomeVolunteerButton";
 
 const initialNavigation = [
   { name: "Home", href: "/", current: false },
   { name: "About", href: "/about", current: false },
-  { name: "Activities", href: "#", current: false },
+  { name: "Activities", href: "/activities", current: false },
   { name: "Contact", href: "/contact", current: false },
   { name: "Donate", href: "/donate", current: false },
 ];
@@ -75,6 +76,7 @@ export default function Nav() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <BecomeVolunteerButton />
                 <button
                   type="button"
                   className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -97,6 +99,7 @@ export default function Nav() {
                       />
                     </Menu.Button>
                   </div>
+
                   <Transition
                     as={Fragment}
                     enter="transition ease-out duration-100"

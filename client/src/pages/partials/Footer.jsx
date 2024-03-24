@@ -45,12 +45,12 @@ const Footer = () => {
             <div class="col-span-2">
               <div>
                 <h2 class="text-2xl font-bold text-gray-900">
-                  Get the latest news!
+                  Become Khudai Khidmatgar
                 </h2>
 
                 <p class="mt-4 text-gray-500">
-                  Get latest updates about Khudai Khidmatgar Organization
-                  activities
+                  Become Khudai Khidmatgar Organization volunteer today to serve
+                  humanity
                 </p>
               </div>
             </div>
