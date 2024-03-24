@@ -8,7 +8,7 @@ const initialNavigation = [
   { name: "About", href: "/about", current: false },
   { name: "Activities", href: "#", current: false },
   { name: "Contact", href: "/contact", current: false },
-  { name: "Donate", href: "#", current: false },
+  { name: "Donate", href: "/donate", current: false },
 ];
 
 function classNames(...classes) {
@@ -27,7 +27,7 @@ export default function Nav() {
     setNavigation(updatedNavigation);
   }, [location.pathname]);
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-10">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
