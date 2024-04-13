@@ -50,7 +50,7 @@ export default function Nav() {
                   <a href="/">
                     <img
                       className="h-10 w-auto bg-white p-1 rounded-full"
-                      src="../src/assets/KKO.png"
+                      src="./img/KKO.png"
                       alt="KKO Logo"
                     />
                   </a>

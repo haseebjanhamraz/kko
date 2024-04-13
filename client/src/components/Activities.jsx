@@ -16,7 +16,7 @@ const Activities = () => {
             <div className="flex flex-col  mx-auto max-w-md text-center lg:text-left">
               <header className="flex flex-col items-center">
                 <img
-                  src="../src/assets/KKO.png"
+                  src="../img/KKO.png"
                   className="w-24 pb-10"
                   alt="KKO Logo"
                 />
