@@ -57,14 +57,14 @@ const About = () => {
         </div>
         <div className="p-10 space-y-5 bg-gray-200 shadow-inner">
           <img
-            src="../src/assets/images/image6.png"
+            src="./photos/image6.png"
             className="rounded-md shadow-lg"
             width={"500px"}
             height={"auto"}
             alt="Khudai Khidmatgar"
           />
           <img
-            src="../src/assets/images/image5.png"
+            src="./photos/image5.png"
             className="rounded-md shadow-lg"
             width={"500px"}
             height={"auto"}
