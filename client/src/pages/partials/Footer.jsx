@@ -42,7 +42,7 @@ const Footer = () => {
         <div class="lg:flex lg:items-start lg:gap-8">
           <div class="text-teal-600">
             <img
-              src="../../src/assets/KKO.png"
+              src="./img/KKO.png"
               className="w-28"
               alt="Khudai Khidmatgar Logo"
             />

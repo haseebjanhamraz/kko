@@ -38,13 +38,13 @@ const Services = () => {
                 <img
                   className="w-32 rounded-lg shadow-lg md:w-56"
                   width="200"
-                  src="../src/assets/images/image1.png"
+                  src="./photos/image1.png"
                   alt="1"
                 />
                 <img
                   className="w-40 rounded-lg shadow-lg md:w-64"
                   width="260"
-                  src="../src/assets/images/image2.png"
+                  src="./photos/image2.png"
                   alt="2"
                 />
               </div>
@@ -52,13 +52,13 @@ const Services = () => {
                 <img
                   className="w-24 rounded-lg shadow-lg md:w-40"
                   width="170"
-                  src="../src/assets/images/image3.png"
+                  src="./photos/image3.png"
                   alt="3"
                 />
                 <img
                   className="w-32 rounded-lg shadow-lg md:w-56"
                   width="200"
-                  src="../src/assets/images/image4.png"
+                  src="./photos/image4.png"
                   alt="4"
                 />
               </div>
