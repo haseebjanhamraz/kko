@@ -1,6 +1,46 @@
-import React from "react";
+import { useState } from "react";
+import { FiCheck } from "react-icons/fi"; // Importing the check icon from react-icons library
 
 const Contact = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [contactType, setContactType] = useState("suggestion"); // Default selection
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const data = {
+      name: name,
+      email: email,
+      message: message,
+      contactType: contactType,
+    };
+
+    try {
+      const response = await fetch("http://localhost:3000/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert("Message sent successfully!");
+        setName("");
+        setEmail("");
+        setMessage("");
+        setContactType("");
+      } else {
+        throw new Error("An error occurred. Please try again later.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred. Please try again later.");
+    }
+  };
+
   return (
     <>
       <div className="my-6">
@@ -130,52 +170,82 @@ const Contact = () => {
               </ul>
             </div>
             <div className="bg-gray-200 p-6 rounded-lg">
-              <p className="text-sm font-semibold text-[#333]">
+              <p className="text-sm mb-4 font-semibold text-[#333]">
                 I want to contact about...
               </p>
               <div className="space-y-4 max-lg:mt-4">
+                {/* Selection buttons */}
                 <button
                   type="button"
-                  className="px-4 py-2 rounded-md bg-[#a91079] text-white text-sm tracking-wider font-medium outline-none border-2 border-[#a91079] mr-4"
+                  className={`px-4 py-2 rounded-md ${
+                    contactType === "suggestion"
+                      ? "bg-[#a91079] text-white"
+                      : "bg-transparent text-gray-400"
+                  } text-sm tracking-wider font-medium outline-none border-2 border-gray-300 mr-4 flex items-center justify-center`}
+                  onClick={() => setContactType("suggestion")}
                 >
-                  Suggesstion / Feedback
+                  Suggestion / Feedback
+                  {contactType === "suggestion" && (
+                    <FiCheck className="ml-2" />
+                  )}{" "}
+                  {/* Highlight the selected option */}
                 </button>
                 <button
                   type="button"
-                  className="px-4 py-2 rounded-md bg-transparent text-gray-400 text-sm tracking-wider font-medium outline-none border-2 border-gray-300 mr-4"
+                  className={`px-4 py-2 rounded-md ${
+                    contactType === "complaint"
+                      ? "bg-[#a91079] text-white"
+                      : "bg-transparent text-gray-400"
+                  } text-sm tracking-wider font-medium outline-none border-2 border-gray-300 mr-4 flex items-center justify-center`}
+                  onClick={() => setContactType("complaint")}
                 >
                   Complaint
+                  {contactType === "complaint" && (
+                    <FiCheck className="ml-2" />
+                  )}{" "}
+                  {/* Highlight the selected option */}
                 </button>
                 <button
                   type="button"
-                  className="px-4 py-2 rounded-md bg-transparent text-gray-400 text-sm tracking-wider font-medium outline-none border-2 border-gray-300"
+                  className={`px-4 py-2 rounded-md ${
+                    contactType === "volunteership"
+                      ? "bg-[#a91079] text-white"
+                      : "bg-transparent text-gray-400"
+                  } text-sm tracking-wider font-medium outline-none border-2 border-gray-300 flex items-center justify-center`}
+                  onClick={() => setContactType("volunteership")}
                 >
                   Volunteership
+                  {contactType === "volunteership" && (
+                    <FiCheck className="ml-2" />
+                  )}{" "}
+                  {/* Highlight the selected option */}
                 </button>
               </div>
-              <form className="mt-8 space-y-4">
+
+              <form className="mt-8 space-y-4" onSubmit={handleSubmit}>
                 <input
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
                   type="text"
                   placeholder="Name"
                   className="w-full rounded-md py-3 px-4 text-sm outline-[#a91079]"
                 />
                 <input
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
                   type="email"
                   placeholder="Email"
                   className="w-full rounded-md py-3 px-4 text-sm outline-[#a91079]"
                 />
-                <input
-                  type="text"
-                  placeholder="Subject"
-                  className="w-full rounded-md py-3 px-4 text-sm outline-[#a91079]"
-                />
                 <textarea
+                  value={message}
+                  onChange={(event) => setMessage(event.target.value)}
                   placeholder="Message"
                   rows="6"
                   className="w-full rounded-md px-4 text-sm pt-3 outline-[#a91079]"
                 ></textarea>
                 <button
-                  type="button"
+                  type="submit"
                   className="text-white bg-[#a91079] hover:bg-[#a91079e2] font-semibold rounded-md text-sm px-4 py-3 flex items-center justify-center w-full"
                 >
                   <svg
