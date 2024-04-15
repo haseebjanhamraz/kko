@@ -5,7 +5,8 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [contactType, setContactType] = useState("suggestion"); // Default selection
+  const [contactType, setContactType] = useState("suggestion");
+  const [showTextInput, setShowTextInput] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -44,7 +45,7 @@ const Contact = () => {
   return (
     <>
       <div className="my-6">
-        <div className="max-w-6xl mx-auto bg-[#2e0249] rounded-lg">
+        <div className="max-w-6xl mx-auto bg-slate-900 rounded-lg">
           <div className="grid md:grid-cols-2 items-center gap-16 sm:p-10 p-4 font-[sans-serif]">
             <div>
               <h1 className="text-4xl font-extrabold text-white">Contact Us</h1>
@@ -90,7 +91,7 @@ const Contact = () => {
                     href="javascript:void(0)"
                     className="text-white text-sm ml-3"
                   >
-                    <strong>+158 996 888</strong>
+                    <strong>+ 92 (091) 2246851</strong>
                   </a>
                 </li>
                 <li className="flex items-center">
@@ -122,7 +123,7 @@ const Contact = () => {
                 </li>
               </ul>
               <ul className="flex mt-12 space-x-4">
-                <li className="bg-[#a91079] hover:bg-[#a91079e2] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
+                <li className="bg-rose-700 hover:bg-rose-9 h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                   <a href="javascript:void(0)">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +139,7 @@ const Contact = () => {
                     </svg>
                   </a>
                 </li>
-                <li className="bg-[#a91079] hover:bg-[#a91079e2] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
+                <li className="bg-rose-700 hover:bg-rose-9 h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                   <a href="javascript:void(0)">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -154,7 +155,7 @@ const Contact = () => {
                     </svg>
                   </a>
                 </li>
-                <li className="bg-[#a91079] hover:bg-[#a91079e2] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
+                <li className="bg-rose-700 hover:bg-rose-9 h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                   <a href="javascript:void(0)">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -181,14 +182,14 @@ const Contact = () => {
                     contactType === "suggestion"
                       ? "bg-[#a91079] text-white"
                       : "bg-transparent text-gray-400"
-                  } text-sm tracking-wider font-medium outline-none border-2 border-gray-300 mr-4 flex items-center justify-center`}
-                  onClick={() => setContactType("suggestion")}
+                  } text-sm tracking-wider font-medium outline-none border-2 border-[#a91079] mr-4`}
+                  onClick={() => {
+                    setContactType("suggestion");
+                    setShowTextInput(false); // Hide text input when "Suggestion / Feedback" button is clicked
+                  }}
                 >
                   Suggestion / Feedback
-                  {contactType === "suggestion" && (
-                    <FiCheck className="ml-2" />
-                  )}{" "}
-                  {/* Highlight the selected option */}
+                  {contactType === "suggestion" && <FiCheck className="ml-2" />}
                 </button>
                 <button
                   type="button"
@@ -196,14 +197,14 @@ const Contact = () => {
                     contactType === "complaint"
                       ? "bg-[#a91079] text-white"
                       : "bg-transparent text-gray-400"
-                  } text-sm tracking-wider font-medium outline-none border-2 border-gray-300 mr-4 flex items-center justify-center`}
-                  onClick={() => setContactType("complaint")}
+                  } text-sm tracking-wider font-medium outline-none border-2 border-gray-300 mr-4`}
+                  onClick={() => {
+                    setContactType("complaint");
+                    setShowTextInput(false); // Hide text input when "Complaint" button is clicked
+                  }}
                 >
                   Complaint
-                  {contactType === "complaint" && (
-                    <FiCheck className="ml-2" />
-                  )}{" "}
-                  {/* Highlight the selected option */}
+                  {contactType === "complaint" && <FiCheck className="ml-2" />}
                 </button>
                 <button
                   type="button"
@@ -211,16 +212,41 @@ const Contact = () => {
                     contactType === "volunteership"
                       ? "bg-[#a91079] text-white"
                       : "bg-transparent text-gray-400"
-                  } text-sm tracking-wider font-medium outline-none border-2 border-gray-300 flex items-center justify-center`}
-                  onClick={() => setContactType("volunteership")}
+                  } text-sm tracking-wider font-medium outline-none border-2 border-gray-300`}
+                  onClick={() => {
+                    setContactType("volunteership");
+                    setShowTextInput(false); // Hide text input when "Volunteership" button is clicked
+                  }}
                 >
                   Volunteership
                   {contactType === "volunteership" && (
                     <FiCheck className="ml-2" />
-                  )}{" "}
+                  )}
+                </button>
+                <button
+                  type="button"
+                  className={`px-4 py-2 rounded-md ${
+                    contactType === "other"
+                      ? "bg-rose-700 text-white"
+                      : "bg-transparent text-gray-400"
+                  } text-sm tracking-wider font-medium outline-none border-2 border-gray-300 flex items-center justify-center`}
+                  onClick={() => {
+                    setContactType("other");
+                    setShowTextInput(true); // Show text input when "Other" button is clicked
+                  }}
+                >
+                  Other
+                  {contactType === "other" && <FiCheck className="ml-2" />}{" "}
                   {/* Highlight the selected option */}
                 </button>
               </div>
+              {showTextInput && ( // Render text input only when showTextInput is true
+                <input
+                  type="text"
+                  placeholder="Specify Contact Reason"
+                  className="w-full rounded-md py-3 px-4 text-sm outline-[#a91079] mt-4"
+                />
+              )}
 
               <form className="mt-8 space-y-4" onSubmit={handleSubmit}>
                 <input
@@ -228,25 +254,25 @@ const Contact = () => {
                   onChange={(event) => setName(event.target.value)}
                   type="text"
                   placeholder="Name"
-                  className="w-full rounded-md py-3 px-4 text-sm outline-[#a91079]"
+                  className="w-full rounded-md py-3 px-4 text-sm outline-rose-700"
                 />
                 <input
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                   type="email"
                   placeholder="Email"
-                  className="w-full rounded-md py-3 px-4 text-sm outline-[#a91079]"
+                  className="w-full rounded-md py-3 px-4 text-sm outline-rose-700"
                 />
                 <textarea
                   value={message}
                   onChange={(event) => setMessage(event.target.value)}
                   placeholder="Message"
                   rows="6"
-                  className="w-full rounded-md px-4 text-sm pt-3 outline-[#a91079]"
+                  className="w-full rounded-md px-4 text-sm pt-3 outline-rose-700"
                 ></textarea>
                 <button
                   type="submit"
-                  className="text-white bg-[#a91079] hover:bg-[#a91079e2] font-semibold rounded-md text-sm px-4 py-3 flex items-center justify-center w-full"
+                  className="text-white bg-rose-700 hover:bg-rose-9 font-semibold rounded-md text-sm px-4 py-3 flex items-center justify-center w-full"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
